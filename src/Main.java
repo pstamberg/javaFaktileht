@@ -3,6 +3,8 @@ public class Main {
         System.out.println("Projekt: faktileht algus");
     	System.out.println("autor:Peeter");
         System.out.println("aasta: 2016 oktoober 12. test kas see toimib");
+        System.out.println("kas alla ka oskab siit tõmmata");
+        
     }
 
 }
