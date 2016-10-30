@@ -1,12 +1,11 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -34,15 +33,34 @@ public class Main extends Application {
         Button submitButton = new Button("Login");
 
 
-// kui oled sess siis selline stseen
-        Button button = new Button();
-        Pane panesees = new Pane();
-        panesees.getChildren().add(button);
-        Scene saidSisse = new Scene(panesees, 500, 500);
+// kui oled sees siis selline stseen
+        BorderPane panesees = new BorderPane();
 
-        button.setText("Klikii");
-        button.setOnMouseClicked(event ->{
+        // kas tuleb
+        HBox hbox = new HBox();
+        panesees.setBottom(hbox);
+
+
+        hbox.setPadding(new Insets(15, 12, 15, 12));
+        hbox.setSpacing(10);
+        hbox.setStyle("-fx-background-color: #336699;");
+
+        Button buttonCurrent = new Button("Current");
+        buttonCurrent.setPrefSize(100, 20);
+        Button buttonProjected = new Button("See ei tee sedagi");
+        buttonCurrent.setPrefSize(300, 20);
+        hbox.getChildren().addAll(buttonCurrent, buttonProjected);
+
+        //katse lõppe
+
+
+
+        Scene saidSisse = new Scene(panesees, 600, 500);
+
+        buttonCurrent.setText("See ei tee suurt midagi");
+        buttonCurrent.setOnMouseClicked(event ->{
             System.out.println("tegidki nii");
+
         });
 // sees stseeni lõpp
 
@@ -54,7 +72,7 @@ public class Main extends Application {
             if(event.getCode() == KeyCode.ENTER){
                 String parool = paroolField.getText();
 
-                if (parool.equals("qwerty")){
+                if (parool.equals("q")){
                     System.out.println("Tubli");
                     primaryStage.setScene(saidSisse);
             }else {
