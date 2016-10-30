@@ -2,10 +2,16 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -53,9 +59,48 @@ public class Main extends Application {
 
         //katse lõppe
 
+        //vboxi lisamine ka, et näha kuidas see käib
+        VBox vertbox= new VBox();
+        vertbox.setPadding(new Insets(10));
+        vertbox.setSpacing(8);
+
+        Text pealk = new Text("Andmed");
+        pealk.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        vertbox.getChildren().add(pealkiri);
+
+        Hyperlink options[] = new Hyperlink[] {
+                new Hyperlink("Portfellid"),
+                new Hyperlink("Instrumendid"),
+                new Hyperlink("Muud")};
+
+        for (int i=0; i<3; i++) {
+            VBox.setMargin(options[i], new Insets(0, 0, 0, 8));
+            vertbox.getChildren().add(options[i]);
+            }
+        panesees.setLeft(vertbox); // lisab vertikaalse boxi
+
+        //vboxi kaste lõpp
+
+        // Flow pane
+        FlowPane flow = new FlowPane();
+        flow.setPadding(new Insets(5, 0, 5, 0));
+        flow.setVgap(4);
+        flow.setHgap(4);
+        flow.setPrefWrapLength(170); //mahutb 2 tulpa
+        flow.setStyle("-fx-background-color: DAE6F3;");
+
+        ImageView pages[] = new ImageView[8];
+        for (int i = 0; i < 8; i++) {
+            pages[i] = new ImageView(
+                    new Image(Main.class.getResourceAsStream("Ikoonid/chart_"+(i+1)+".png")));
+            flow.getChildren().add(pages[i]);
 
 
-        Scene saidSisse = new Scene(panesees, 600, 500);
+        }
+        panesees.setRight(flow);
+        //flow pane lõpp
+
+        Scene saidSisse = new Scene(panesees, 1000, 1000);
 
         buttonCurrent.setText("See ei tee suurt midagi");
         buttonCurrent.setOnMouseClicked(event ->{
