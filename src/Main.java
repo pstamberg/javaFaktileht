@@ -17,16 +17,23 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         System.out.println("Projekt: faktileht algus");
-    	System.out.println("autor:Peeter");
+        System.out.println("autor:Peeter");
         System.out.println("aasta: 2016 oktoober 12. test kas see toimib");
         System.out.println("kas alla ka oskab siit tõmmata");
         System.out.println("tegeleme FXga ka nüüd");
         launch(args);
     }
 
+
     @Override
+    public void start(Stage primaryStage) throws Exception {
+        new LoginDB(); // Käivitame login akna
+    }
+}
+    /** välja kodeeritud testi ajaks
+
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Pealeht");
 
@@ -84,8 +91,8 @@ public class Main extends Application {
         // Flow pane
         FlowPane flow = new FlowPane();
         flow.setPadding(new Insets(5, 0, 5, 0));
-        flow.setVgap(4);
-        flow.setHgap(4);
+        flow.setVgap(10);
+        flow.setHgap(5);
         flow.setPrefWrapLength(170); //mahutb 2 tulpa
         flow.setStyle("-fx-background-color: DAE6F3;");
 
@@ -137,23 +144,11 @@ public class Main extends Application {
             }
 
         });
-/*
 
-        StackPane saidSisse = new StackPane();
-
-
-        Scene scene = new Scene(saidSisse, 400, 400);
-        primaryStage.setScene(scene);
-
-        Button button = new Button();
-
-        button.setText("Klikii");
-        button.setOnMouseClicked(event ->{
-            System.out.println("tegidki nii");
-        });
-        layout.getChildren().add(button);
-        */
 
         primaryStage.show();
     }
 }
+
+     välja lõpp
+     */
